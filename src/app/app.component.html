@@ -2,11 +2,15 @@
   <div class="columns is-centered">
     <div class="box column is-one-third">
       <h1 class="title has-text-centered">Typing Challenge</h1>
-      <p class="has-text-centered">{{ targetSentence }}</p>
+      <p class="has-text-centered">
+        <span [class]="compare(letter, enteredText[i])" *ngFor="let letter of randomText.split(''); let i = index;"
+          >{{ letter }}</span
+        >
+      </p>
       <div class="field">
-        <input class="input" type="text">
+        <input class="input" type="text" (input)="onChange($event.target!)">
       </div>
-      <div class="box has-text-centered">
+      <div class="box has-text-centered" *ngIf="enteredText === randomText">
         <h1 class="title">You Win!</h1>
       </div>
     </div>
